@@ -1,0 +1,45 @@
+{
+    "name": "risks",
+    "version": "0.0.1",
+    "private": true,
+    "sapux": true,
+    "description": "Risks",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "scripts": {
+        "start-live": "npm run start-live-v4",
+        "start-live-v4": "node --inspect node_modules/@ui5/cli/bin/ui5 serve --open index.html",
+        "start": "npm run build && npm run start-live",
+        "build": "rimraf dist && ui5 build -a --include-task=generateManifestBundle generateCachebusterInfo",
+        "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateManifestBundle generateCachebusterInfo"
+    },
+    "remarkConfig": {
+        "plugins": [
+            "remark-preset-lint-consistent"
+        ]
+    },
+    "devDependencies": {
+        "@ui5/cli": "^2.11.1",
+        "@ui5/fs": "^2.0.6",
+        "@ui5/logger": "^2.0.1",
+        "@sap/ux-ui5-tooling": "1",
+        "rimraf": "3.0.2",
+        "@sap/ui5-builder-webide-extension": "1.0.x",
+        "ui5-task-zipper": "^0.3.1",
+        "mbt": "^1.0.15"
+    },
+    "optionalDependencies": {
+        "fsevents": "1.2.9"
+    },
+    "ui5": {
+        "dependencies": [
+            "@sap/ui5-builder-webide-extension",
+            "ui5-task-zipper",
+            "mbt"
+        ]
+    }
+}
